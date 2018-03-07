@@ -8,10 +8,30 @@ class App extends Component {
 	constructor(props)
   	{
   		super(props);
-  		this.state={random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:3};
+  		this.state={random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:5};
   	}
   	componentDidUpdate()
   	  	{		
+  	  		var WinChk=1;
+  	  		for(var i=1;i<=10;i++)
+  	  			{
+  	  				
+  	  				if(document.getElementById(i).disabled==true)
+  	  					WinChk++;
+  	  				else
+  	  					break;
+  	  			}
+  	  			if(WinChk==11)
+  	  			{
+  	  				alert('You Won,Congrats!!!! Total score is: '+this.state.score);
+  	  				this.setState({random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:5});
+  	  				for(var i='1';i<=10;i++)
+  	  		  		document.getElementById(i).disabled=false;
+  	  			}
+
+  	  		
+
+
   	  	if(this.state.resetCount==0 && this.state.rerollCount==0)
   	  			{   
   	  				var possiblityWinCheck=true;
@@ -25,7 +45,7 @@ class App extends Component {
 
   	  					for(var i='1';i<=10;i++)
   	  		  	document.getElementById(i).disabled=false;
-  	  		 this.setState({random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:3}); }
+  	  		 this.setState({random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:5}); }
   	  			}
   	  }
   	
@@ -42,7 +62,7 @@ class App extends Component {
   	  							var newVal=Math.floor(Math.random()*10)+1;
   	  			while(newVal==pointer.state.random)
   	  				newVal=Math.floor(Math.random()*10)+1;
-  	  							pointer.setState({random:newVal,score:pointer.state.score+1,resetCount:pointer.state.resetCount});
+  	  							pointer.setState({random:newVal,score:pointer.state.score+10,resetCount:pointer.state.resetCount});
   	  						}
   	  					}
   	  	function reset()
@@ -80,22 +100,22 @@ class App extends Component {
   	  		 // pointer.setState({random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:this.state.rerollCount}); 
   	  			}
   	  	}
-  	  	function gameOverTest()
-  	  	{
-  	  		if(pointer.state.resetCount==0 && pointer.state.rerollCount==0)
-  	  			{
-  	  				var possiblityWinCheck=true;
-  	  				if(document.getElementById(pointer.state.random).disabled==true)
-	  	  				{
-  	  				alert('Game Over');
-  	  				alert('Your total score was='+pointer.state.score+' Better Luck Next Time!!');
-  	  				// pointer.setState({random:pointer.state.random,score:pointer.state.score,resetCount:pointer.state.resetCount-1,rerollCount:this.state.rerollCount})
+  	  	// function gameOverTest()
+  	  	// {
+  	  	// 	if(pointer.state.resetCount==0 && pointer.state.rerollCount==0)
+  	  	// 		{
+  	  	// 			var possiblityWinCheck=true;
+  	  	// 			if(document.getElementById(pointer.state.random).disabled==true)
+	  	  // 				{
+  	  	// 			alert('Game Over');
+  	  	// 			alert('Your total score was='+pointer.state.score+' Better Luck Next Time!!');
+  	  	// 			// pointer.setState({random:pointer.state.random,score:pointer.state.score,resetCount:pointer.state.resetCount-1,rerollCount:this.state.rerollCount})
 
-  	  					for(var i='1';i<=10;i++)
-  	  		  	document.getElementById(i).disabled=false;
-  	  		 pointer.setState({random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:3}); }
-  	  			}
-  	  	}
+  	  	// 				for(var i='1';i<=10;i++)
+  	  	// 	  	document.getElementById(i).disabled=false;
+  	  	// 	 pointer.setState({random:Math.floor(Math.random()*10)+1,score:0,resetCount:3,rerollCount:3}); }
+  	  	// 		}
+  	  	// }
   	  // 	componentDidUpdate()
   	  // 	{		
   	  // 	gameOverTest();
@@ -107,7 +127,7 @@ class App extends Component {
 
 				    <div><center><img src='logo.png' alt="not found" /></center>
 					<br />
-					<div>&&nbsp;nbsp;&nbsp;&nbsp;<h1 style={{color: "yellow",fontFamily:'Comic Sans MS'}}><center>Press&nbsp;&nbsp;&nbsp;&nbsp;{this.state.random}</center></h1></div><br />
+					<div>&nbsp;nbsp;&nbsp;&nbsp;<h1 style={{color: "yellow",fontFamily:'Comic Sans MS'}}><center>Press&nbsp;&nbsp;&nbsp;&nbsp;{this.state.random}</center></h1></div><br />
 					<center><button id='1'  className='btn btn-success btn-lg' onClick={() => chk(1)}>1</button>&nbsp;
 					<button className='test' id='2'  className='btn btn-success btn-lg' onClick={() => chk(2)}>2</button>&nbsp;
 					<button id='3'  className='btn btn-success btn-lg' onClick={() => chk(3)}>3</button>&nbsp;
