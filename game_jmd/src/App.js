@@ -127,7 +127,7 @@ class App extends Component {
 
 				    <div><center><img src='logo.png' alt="not found" /></center>
 					<br />
-					<div>&nbsp;nbsp;&nbsp;&nbsp;<h1 style={{color: "yellow",fontFamily:'Comic Sans MS'}}><center>Press&nbsp;&nbsp;&nbsp;&nbsp;{this.state.random}</center></h1></div><br />
+					<div><h1 style={{color: "yellow",fontFamily:'Comic Sans MS'}}><center>Press&nbsp;&nbsp;&nbsp;&nbsp;{this.state.random}</center></h1></div><br />
 					<center><button id='1'  className='btn btn-success btn-lg' onClick={() => chk(1)}>1</button>&nbsp;
 					<button className='test' id='2'  className='btn btn-success btn-lg' onClick={() => chk(2)}>2</button>&nbsp;
 					<button id='3'  className='btn btn-success btn-lg' onClick={() => chk(3)}>3</button>&nbsp;
